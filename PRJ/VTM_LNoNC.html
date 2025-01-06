@@ -1,0 +1,94 @@
+<!doctype hmtl>
+
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "Jyri Tero">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "../CSS/ProjectStyles.css">
+        <link rel = "stylesheet" href = "../CSS/GeneralStyles.css">
+        <title>Jyri Tero - Last Nights of New Chicago</title>
+    </head>
+    <body>
+        <header id = "Palkki">
+            <div id = "MainNav">
+                <ul id = "MainNavMenu">
+                    <li><a href = "../index.html">Home</a></li>
+                    <li><a href = "../WhatCanIDo.html">What can I do</a></li>
+                    <li><a class = "active" href = "../WhatHaveIDone.html">What have I done</a></li>
+                </ul>
+            </div>
+
+            <div id = "QuickFacts">
+                <p>Game programming student studying in Xamk, Kotka</p>
+                <p>Welcome to my portfolio page!</p>
+            </div>
+        </header>
+
+        <div id = "Content">
+            <h2>Vampire: The Masquerade Jam: The Last Nights of New Chicago</h2>
+            <div id = "CardIntro">
+                <div id = "InfoCard">
+                    <img src = "../IMG/VtmJamHeaderpng.png" alt = "Last Nights of New Chicago"> 
+                    <div id = "FactText">
+                        <p>Date: 11/2021</p>
+                        <p>Made by: Nikita Kiuru, Laura Malinen, Sami Ahonen, Joel Heinonen, Jyri Tero, Andrei Vorna, Lotta Lapiolahti</p>
+                        <a href = "https://itch.io/jam/vtm/rate/1298166">Download Last Nighst of New Chicago from Itch.io!</a>
+                    </div>
+                    <div id = "TableofContents">
+                        <p>
+
+                        </p>
+                    </div>
+                </div>
+                <div id = "intro">
+                    <p>
+                        Last Nights of New Chicago is a visual novel with RPG and rogue like features made for Vampire: The Masquerade Jam held in November 2021. In the game player assumes the role of a vampire detective with the task to find a bomb hidden somewhere in the city. Player has 30 nights to solve the case or face the final death, along with everyone in the city. Gameplay revolves around player partaking in events spawning around the city which drive the story forward and give the player resources such as blood and skills. 
+                    </p>
+                </div>
+            </div>
+
+            <div id = "Texts">
+                <p>
+                    The video below showcases the basic gameplay within the game. To read the texts, pause the video or better yet, download the game yourself via the link above.                </p>
+                <iframe src="https://www.youtube.com/embed/5jY-yhBcRJ0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>
+                    Jam spanned the whole month of November and the project had been started at the beginning of the jam. I joined the project for the last weekend with the schedule of “Deadline’s fast approaching, game needs to be ready.”, so the game was developed in true jam fashion from midday to midnight and beyond.                </p>
+
+                <h2>My Role</h2> 
+                <p>
+                    I joined the project mainly to write scene scripts, the non-programming type, for events. Designer handed me a piece of paper outlining what should happen in a scene, what information player should get from it and what options player should have, at least.  The outlines were vague and gave a lot of room for creativity, not a single line of dialog was written for me. I wasn’t the only one writing these scenes out so there we had to make sure characters were consistent. After I had finished with a scene, and it was approved by the designer/leader, a programmer fed the dialog lines into Unity Scriptable Objects. To make this easier, each line of dialog was indexed along with marking which skills or resources a dialog option requires or gives. I found this to be fun and nice, although the lack of time and number of scenes in need of writing was tiresome.                </p>
+                <p>
+                    Before writing began, I created a few buildings for the city view. I’m no 3D model and even less a texture artist, but with simple shapes, Google and help form friends I managed to create something presentable.              
+                </p>
+                <p>
+                    After the scenes were written out, I was assigned to build the city using building assets me and others had made. This was my favorite part of the project, and one of my favorite parts in game development overall, building something nice from premade assets. While building the city, I added some post processing to flavor the city view, make neon pop and hide some rough edges. I did worry if what I was doing was any good but decided that if it’s not good enough, I’ll get feedback and adjust as needed.              
+                </p>
+                <p>
+                    Lastly, I stepped into the role of an UI programmer as I assigned art, created by artist, to buttons and other UI elements. I also shuffled around come UI elements to make things more pleasant to look at and hide the default Unity UI.       
+                </p>
+                <p>
+                    While doing all that I also acted as a rubber duck to programmers and gave opinions as asked.    
+                </p>
+
+                <h2>Problems and how to solve them</h2>
+                <p>
+                    Project wasn’t without its issues but as I focused mostly on writing, I wasn’t too aware of them. My issues mainly revolved around the scene dialog indexing.
+                </p>
+                <p>
+                    Coming up with an indexing syntax for the scripts that made sense to all writers and programmers was a bit of a struggle and took a while. How to distinguish what’s said, thought and done. What’s descriptive and how to communicate that an option requires or awards certain resources. Once that was sorted, the later it got, more difficult it became to avoid minor mistakes with the indexing due to exhaustion, but working in the same space with the programmer feeding dialogs into Unity made it easy to ask and clear any confusions. 
+                    Additionally, but minorly, making sure that my texts match what others have written was a cause for stress. I read through what others had written and did my best to stay close to it. In the end I decided to simply write and if someone find it unfitting or too different, I’d change it.
+                </p>
+
+
+                <h2>Lopuksi</h2>
+                <p>
+                    Testing was, due to the lack of time, very ad-hoc, though I didn’t really partake to testing as I was busy with other tasks. Bugs within scene logic were fixed after release, which is fine by the rules of the jam.                </p>
+                <p>
+                    After all, working on the game was exhausting due to lack of time, but fun and interesting. I was able do interesting things to an interesting game set in an interesting universe. Vampire: the Masquerade is a huge interest amongst our group of friends, so working with the actual IP was simply cool.                </p>
+
+            </div>
+        </div>
+
+    </body>
+</html>

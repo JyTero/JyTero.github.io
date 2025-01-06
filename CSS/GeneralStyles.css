@@ -1,0 +1,159 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: arial;
+	background-image: url("../IMG/BGnew.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+	text-align: center;
+     
+}
+p, a, ul, li, h3{
+	line-height: 1.6;
+	letter-spacing: 1px;
+	font-size: 18px;
+	color: black;
+}
+a:hover {
+	text-decoration: underline;
+	color: rgba(20, 20, 121, 1.0);
+}
+a {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+#Palkki {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	width: 1050px;
+}
+#Palkki a{
+	font-size: 22px;
+	white-space: nowrap;
+
+}
+#Palkki a.active{
+	font-size: 25px;
+	border-radius: 40px 40px 40px 40px;
+	border: solid;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 18px;
+	padding-right: 18px;
+	background-color: rgba(181, 170, 181, 0.6);
+	text-decoration: underline;
+}
+
+#MainNav{
+
+	display: flex;
+	justify-content: space-evenly;
+	border-radius: 40px 40px 40px 40px;
+	border: solid;
+	background: rgba(226, 204, 226, 0.2 );
+
+}
+#MainNav li {
+	display: inline;
+	padding: 30px;
+}
+#MainNavMenu {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 0;
+    margin-block-start: 2px;
+    margin-block-end: 2px;
+}
+
+#QuickFacts {
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+	border: solid;
+	border-top-style: none;
+	border-radius: 0px 0px 40px 40px;
+	padding: 0px;
+	display: flex;
+	flex-direction: column;
+	background: rgba(226, 204, 226, 0.2);
+}
+#QuickFacts p{
+	font-size: 16px;
+	margin: 0px;
+	margin-top: 4px;
+}
+#QuickFacts a{
+	font-size: 15px;
+	text-decoration: underline;
+}
+
+#Content {
+	margin-left: auto;
+	margin-right: auto;
+	width: 950px;
+}
+
+@media only screen and (max-width: 769px) {
+	html p {
+		margin: 5px;
+	}
+	#Palkki {
+		margin-top: 0px;
+		width: 100%;
+	}
+	#Palkki a.active{
+		font-size: 25px;
+		border-radius: 0px 0px 0px 0px;
+	}
+	#MainNav{
+		border: none;
+		border-bottom: solid;
+		border-radius: 0px 0px 0px 0px;
+	}
+	#MainNav li {
+		display: block;
+		padding: 0px;
+	}
+	#MainNav Ul {
+		display: block;
+	}
+	#QuickFacts {
+		width: 95%;
+		margin-left: auto;
+		margin-right: auto;
+
+	}
+	#QuickFacts p{
+	font-size: 17px;
+	}
+	#Content {
+		width: 100%;
+	}
+
+}
+
+@media only screen and (max-width: 1150px) and (min-width: 770px) {
+
+	#Palkki {
+		margin-top: 0px;
+		width: 100%;
+	}
+	#MainNav{
+		border: none;
+		border-bottom: solid;
+		border-radius: 0px 0px 0px 0px;
+	}
+	#QuickFacts p{
+		font-size: 17px;
+	}
+	#Content {
+		width: 94%;
+	}
+
+}

@@ -1,0 +1,95 @@
+<!doctype hmtl>
+
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "Jyri Tero">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "../CSS/ProjectStyles.css">
+        <link rel = "stylesheet" href = "../CSS/GeneralStyles.css">
+        <title>Jyri Tero - Unfinished Business</title>
+    </head>
+    <body>
+        <header id = "Palkki">
+            <!--<h2>Huom! Tätä sivua ei ole vielä sidutto osaksi porfoliosivustoa, silläs se ei tällä hetkellä ole prioriteettilistalla, koko sivusto kaipaisu korjausta! Napit vievät sinne minne olettaakin, mutta takaisin ei ole paluuta...</h2>-->
+            <div id = "MainNav">
+                <ul id = "MainNavMenu">
+                    <li><a href = "../index.html">Home</a></li>
+                    <li><a href = "../WhatCanIDo.html">What can I do</a></li>
+                    <li><a class = "active" href = "../WhatHaveIDone.html">What have I done</a></li>
+                </ul>
+            </div>
+
+            <div id = "QuickFacts">
+				<p>Game programming student studying in Xamk, Kotka</p>
+                <p>Welcome to my portfolio page!</p>
+			</div>
+        </header>
+
+        <div id = "Content">
+            <h1>FGJ22: Unfished Business</h1>
+            <div id = "CardIntro">
+                <div id = "InfoCard">
+                    <img src = "../IMG/UnfinishedBusiness.png" alt = "Unfinished business"> 
+                    <div id = "FactText">
+                        <p>Date: 01/2022</p>
+                        <p>Made by: Jenna Toivonen, Georgi Babuskin, Elina Parkkinen, Ida Rask, Jyri Tero</p>
+                        <a href = "https://iiiiita.itch.io/unfinished-business">Download Unfished Business from Itch.io!</a>
+                    </div>
+                    <div id = "TableofContents">
+                        
+                    </div>
+                </div>
+                <div id = "intro">
+                    <p>
+                        Unfinished business as a game made during the Finnish Game Jam (Part of the Global Game Jam), meaning it was done in less than 48 hours. In the game player takes the role of a recently deceased ghost, who still has some unfinished business in the realm of the living and as such isn’t ready to move to the other side. The player’s free to switch between the realms of the living and the dead. The realm of the living isn’t suitable for ghosts, much less so when people spot you. Spending too much time in the realm of the living pulls player to the realm of the dead, being seem by people makes this pull stronger. In the realm of the dead, player is free to roam for as long as they desire, but beware of the Grim Reaper, who’s only doing his job of trying to get you to the other side for good.			
+                    </p>
+                </div>
+            </div>
+
+            <div id = "Texts">
+
+                <p>
+                    Here’s our “trailer” for the game.
+                </p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/LjoKF_6tELI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>
+                </p>
+
+                <h2>My tasks</h2> 
+
+                <p>
+                    I was a programmer for the project and my main responsibility was the player, meaning movement, interactions, stamina for staying in the realm of the living and travel between the two realms. Stamina and transition between the two realms caused me the most issues during this project.
+                </p>
+                <p>
+                    Movement’s simple WASD movement, with the Q and E keys used to rotate the player. Nothing too extraordinary, could be more intuitive though. 
+                </p>
+                <p>
+                    Interactions were originally done with a help of a dedicated interactions script, but it caused issues with certain booleans, so they were moved to the player script as well. The game only has two interactions so it wasn’t too big of a hassle, after figuring out the source of problems.
+                </p>
+                <p>
+                    Travel between the realms caused some major issues. After some research I concluded that the best method to do the switch would be to gradually reduce the alpha of all items in a realm while simultaneously increasing the alpha for the other realm. I changed the material on all my test objects to support the alpha channel and, after some struggling and help  from friends both in and outside of the team, got the feature functioning.
+                </p>
+                <p>
+                    Some time later I realized that, by default, materials that have alpha channel cannot cast or receive shadows. Briefly put, by default unity materials are rendered as opaque, which means they have no alpha channel and they cast and receive shadows. Changing the rendering mode to fade means the objects have alpha but don’t want to have anything to do with shadows. Fade was also designed specifically to fading objects, hence the name. 
+                </p>
+                <p>
+                    However, the lack of shading was a problem as it would have drastically altered the look of the game and we had no time to design our art around that. I knew nothing of Unity materials and my first course of action was to simply change the material of the objects. I had testMaterial01, which was opaque, and testMaterial02, which was copied from 01 but was fade instead. This worked fine, until I realized, that having to drag tens of materials (times two) to inspector would be nightmare, not to mention the fact, which I realized even later, the artists were creating the objects in such a way that changing material would be a bigger nightmare. 
+                </p>
+                <p>
+                    I decided to find a way to change material. Only, that doesn’t seem to be possible with a line or two, contrary to what I expected. I did some more research 
+                    and found a piece of code from <a href = "https://answers.unity.com/questions/1004666/change-material-rendering-mode-in-runtime.html">Unity.answers</a>, which then I promptly proceeded to implement. With some adjustments to other scripts and the scene as a whole thing worked just fine. The fade works fine both ways, but if the player spams between the two, there’s a chance for the whole game to freeze.
+                </p>
+                <p>
+                    Real source of struggle was the stamina system, and I partially blame jam exhaustion since I started this feature on early evening of the second jam day. Plan was that stamina would gradually drain when in the realm of the living and the gradually refill when in the other realm. Being spotted by NPC would increase the drain speed. I, however, had multiple issues, most of which were simple typos or mislogics, with when to fill and when to drain the stamina. After a plenty of help from the team and other friends I managed to get a version of the system to work. Otherwise, the feature is as designed, but we ended up having the stamina fill up after a while in the world of the dead, instead of gradually. Oh, and the whole system’s lacking any UI due to lack of time. That’s definitely on the agenda if we end up working on the game further. 
+                </p>
+
+                <p>
+                    Testing for the game was lacking, even on ad hock standards, due to lack of resources. As such, many bugs and unpolished features are present in the game but I’m not too worried about that. It’s a jam title done by a small group, some of which were working on their first game project. For me personally the project was a huge learning opportunity as it’s the first time I work as programmer on a project. I knew I’d be slow to create the code needed since I had to research almost everything, but I learned I could do so much more with Unity than I thought. So, onwards onto next assignments!
+                </p>
+
+            </div>
+        </div>
+
+    </body>
+</html>

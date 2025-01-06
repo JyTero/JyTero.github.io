@@ -1,0 +1,99 @@
+#CardIntro{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+#intro {
+    width: 45%;
+}
+#InfoCard {
+	width: 45%;
+	display: flex;
+    flex-direction: column;
+	border: solid;
+	border-radius: 40px;
+	background: rgba(204, 214, 226, 0.4);
+
+}
+
+#InfoCard img {
+	border-radius: 35px 35px 0px 0px;
+    height: 240px;
+	
+}
+
+#intro p {
+    margin-top: 0px;
+}
+
+#FactText {
+	display: flex;
+	flex-direction: column;
+	padding: 0px;
+}
+#FactText p{
+    margin-top: 0px;
+	margin-bottom: 5px;
+}
+
+#Texts p {
+	padding-top: 15px;
+}
+#Texts a {
+	text-decoration: underline;
+}
+#Texts iframe {
+	padding-top: 15px;
+	width: 560px;
+	height: 315px;	
+
+}
+@media only screen and (max-width: 550px){
+	#FactBox {
+		width: 90%;
+		margin: auto;
+		border-radius: 40px 40px 40px 40px;
+	}
+	#FactBox img {
+		Display: none;
+	}
+	#FactText  {
+		width: 100%;
+	}
+	#Texts iframe {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 769px) and (min-width: 551px){
+	#FactBox {
+		width: 92%;
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+	}
+
+	#FactBox img {
+		width: 100%;
+		border-radius: 0px 0px 40px 40px;
+	}
+	#Texts iframe {
+	width: 100%;
+	}
+}
+
+@media only screen and (max-width: 1150px) and (min-width: 770px) {
+
+	#FactBox {
+		width: 96%;
+		margin: auto;
+	}
+	#FactBox p {
+		margin: 10px;
+	}
+	#FactBox img {
+		width: 65%;
+		border-radius: 0px 40px 40px 0px;
+	}
+
+}

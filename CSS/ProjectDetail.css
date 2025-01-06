@@ -1,0 +1,35 @@
+/*Hotel V*/
+#Findingway{
+    display: flex;
+
+}
+#Findingway ul {
+    list-style-type: ;
+    margin-left: -18px;
+}
+#FindingTexts{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+#FindingTexts li{
+    margin-bottom: 12px;
+}
+#FindingVid{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+
+}
+#AcSOExpln{
+    display: flex;
+    flex-direction: row;
+}
+
+/*PENTHOUSE*/
+#PenthouseEyes{
+    display: flex;
+}
+#PenthouseEyes p{
+    width: 60%;
+}

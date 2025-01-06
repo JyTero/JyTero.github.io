@@ -1,0 +1,88 @@
+<!doctype hmtl>
+
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "Jyri Tero">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "../CSS/ProjectStyles.css">
+        <link rel = "stylesheet" href = "../CSS/GeneralStyles.css">
+        <title>Jyri Tero - Unfinished Business</title>
+    </head>
+    <body>
+        <header id = "Palkki">
+            <!--<h2>Huom! Tätä sivua ei ole vielä sidutto osaksi porfoliosivustoa, silläs se ei tällä hetkellä ole prioriteettilistalla, koko sivusto kaipaisu korjausta! Napit vievät sinne minne olettaakin, mutta takaisin ei ole paluuta...</h2>-->
+            <div id = "MainNav">
+                <ul id = "MainNavMenu">
+                    <li><a href = "../index.html">Home</a></li>
+                    <li><a href = "../WhatCanIDo.html">What can I do</a></li>
+                    <li><a class = "active" href = "../WhatHaveIDone.html">What have I done</a></li>
+                </ul>
+            </div>
+
+            <div id = "QuickFacts">
+                <p>Game programming student studying in Xamk, Kotka</p>
+                <p>Welcome to my portfolio page!</p>
+            </div>
+        </header>
+
+        <div id = "Content">
+            <h1>FGJ24: Morning Rush</h1>
+            <div id = "CardIntro">
+                <div id = "InfoCard">
+                    <img src = "../IMG/MorningRush.png" alt = "Unfinished business"> 
+                    <div id = "FactText">
+                        <p>Date: 01/2024</p>
+                        <p>Made by: Sami Ahonen, Laura Malinen, Jesses Rinneranta Melinda Veijalainen, Jyri Tero</p>
+                        <a href = "https://globalgamejam.org/games/2024/morning-rush-4">Download Morning Rush from Global Game Jam Site!</a>
+                    </div>
+                    <div id = "TableofContents">
+
+                    </div>
+                </div>
+                <div id = "intro">
+                    <p>
+                        Morning Rush is… a game made for FGJ/GGJ (Finnish Game Jam / Global Game Jam) 2024. In the game player helps a tired man to wit his morning chores by clicking and dragging his limbs. Tasks include shutting down the alarm and brushing teeth. Character, and most world items, are affected by physics, meaning without player input the man simply falls over.  Jam theme was Make me Laugh and after pondering it a while as a team, we decided on the Morning Rush concept.                     </p>
+                </div>
+            </div>
+
+            <div id = "Texts">
+
+                <p>
+                    Here’s our trailer for the game.
+                </p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/akpxIprVOBg?si=djWGhrlIoood46iV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p>
+                </p>
+
+                <h2>My tasks</h2> 
+
+                <p>
+                    My main task for the project was the development of tasks and item programming. Tasks are things player needs to do to move forward such as shutting down the alarm. There are multiple tasks in the same room, so a TaskManager tracks progress, showing next task and loading next room once last task of room is done.</p>
+                <p>
+                    Tasks can be roughly divided in two groups. Player either needs to simply touch item, such as when shutting down the alarm, or move item to a certain place, such as when brushing teeth, the brush needs to be moved to the player mouth.
+                </p>
+                <p>
+                    Developing this whole task system was a slow struggle, mostly because I hadn’t programmed in a while, and it was hard to get back into the groove. I came up with ideas and concepts before finally settling on something bit too complicated for the scale of the project:</p>
+                <p>
+                    Tasks themselves are Scriptable Objects (SO) that have task name, which is shown to the player, and Scene Task Object ID. Each item related to a task have an ID which is given to this task field for the TaskManager to make sure tasks are completed properly.  An example case which was never implemented: A room has multiple lights and light switches. First comes a task to turn on a specific light and then later a task to turn on the rest of the lights. The IDs allow the task to make sure that the specific light switch was interacted with, instead of looking for a generic light switch interaction, in which case any light switch would cause the task to be considered completed.
+                </p>
+
+                <h2> I also programmed a few items</h2> 
+                <p>
+                   A toaster that allows items to be put into it. After timer the item(s) in the toaster would go flying into the air. Toaster is comprised of two sprites with the sole difference being the position of the lever (Up/Down). Toaster changes shown sprite when something is put into the toaster and when items fly out. Under the sprites toaster is just a collection of colliders in a U shape. Toaster is not the game since we ran out of time to build a kitchen level.
+                </p>
+                <p>
+                    Light switch that activates when player hand crosses over it and turns on/off connected light(s). This is not in the game since sprites didn’t receive lighting from light sources and we had no time to debug this.
+                </p>
+                <p>
+                    Bathroom cabinet that opens/closes when player hand touches cabinet handles. Cabinet exists in game in this state, I would’ve liked to add items, such as the toothbrush, into the cabinet but couldn’t get it to work in time.
+                </p>
+                <p>
+                    Overall, we managed to get a working build of the game ready in time and I’m happy with it. It’s always sad to have work not visible in the end product but such is the nature of this field, especially in jams. I had fun and learned a few things along the way, too!
+                </p>
+            </div>
+        </div>
+
+    </body>
+</html>

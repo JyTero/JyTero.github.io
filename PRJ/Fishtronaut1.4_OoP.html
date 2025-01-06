@@ -1,0 +1,66 @@
+<!doctype hmtl>
+
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "Jyri Tero">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "../CSS/ProjectStyles.css">
+        <link rel = "stylesheet" href = "../CSS/GeneralStyles.css">
+        <title>Jyri Tero - Unfinished Business</title>
+    </head>
+    <body>
+        <header id = "Palkki">
+            <!--<h2>Huom! Tätä sivua ei ole vielä sidutto osaksi porfoliosivustoa, silläs se ei tällä hetkellä ole prioriteettilistalla, koko sivusto kaipaisu korjausta! Napit vievät sinne minne olettaakin, mutta takaisin ei ole paluuta...</h2>-->
+            <div id = "MainNav">
+                <ul id = "MainNavMenu">
+                    <li><a href = "../index.html">Home</a></li>
+                    <li><a href = "../WhatCanIDo.html">What can I do</a></li>
+                    <li><a class = "active" href = "../WhatHaveIDone.html">What have I done</a></li>
+                </ul>
+            </div>
+
+            <div id = "QuickFacts">
+                <p>Game programming student studying in Xamk, Kotka</p>
+                <p>Welcome to my portfolio page!</p>
+            </div>
+            <p>Toim. Huom.!: Sivu ei ole osana portfoliosivustoa, eikä portfoliossa siis ole linkkiä tälle sivulle</p>
+        </header>
+
+        <div id = "Content">
+            <h1>Fishtronaut</h1>
+            <div id = "CardIntro">
+                <div id = "InfoCard">
+                    <img src = "../IMG/Fishtronaut.png" alt = "Fishtronaut tittle"> 
+                    <div id = "FactText">
+                        <p>Date: 09/2022</p>
+                        <p>Made by:Essi Kykkänen, Jyri Tero</p>
+                        <!--<a href = "https://globalgamejam.org/games/2024/morning-rush-4">Download Morning Rush from Global Game Jam Site!</a>-->
+                    </div>
+                    <div id = "TableofContents">
+
+                    </div>
+                </div>
+                <div id = "intro">
+                    <p>
+                    Fishtronaut on Pelien ekosysteemit –kurssille toteutettu mobiilipeli, jossa pelaajan tulee auttaa kalaa pääsemään avaruuteen. Kala hyppää automaattisesti koskiessaan alustaan ja liikkuu oikealle ja vasemmalle kännykkää kallistamalla. Pelin bugeja alettiin korjaamaan puolisen vuotta kurssin jälkeen. Kirjoitan raporttia noin puolitoista vuotta viimeisimmän tuntimerkkauksen jälkeen.
+                    </p>
+                </div>
+            </div>
+
+            <div id = "Texts">
+                <h2>Osuuteni</h2> 
+                <p>
+                Sillä pelin toteuttamisen ja korjausten toteuttamisen välillä on melko pitkä aika, kului projektitunneista osa alussa vain koodiin (uudelleen)tutustumiseen. Pidän tätä normaalina osana projektiin paluuta, sillä omat tiedot ja taidot uusiutuvat varsin tiuhaa ”uran” alussa. Tässä projektissa kyse on vähintään osittain myös siitä, että aiemmin tehty koodi on ollut huonoa, sekavaa ja/tai hämmentävää, sillä minulla on nyt vastaavan suuntaista reaktiota ”uuteen” koodiin. 
+                </p>
+                <p>
+                Tarkoitus oli toteuttaa lähinnä bugikorjauspäivitys ja aiempi koodipohja kaipasi muutoksia, joten iso osa tehdystä työstä oli vanhan refaktorointia. Uusien ominaisuuksien tuottaminen jäi vähemmälle. Esimerkiksi alustoja, joita pitkin pelaajan on tarkoitus edetä, spawnasi turhan tiuhaan, jolloin alustalle ”osumisen” merkitys katosi lähes täysin. Samoin muokkasin todennäköisyyksiä, joilla vihollisalusta spawnaa, jottei jokaisella vastaantulevalla alustalla ole vihollista. 
+                </p>
+                <p>
+                Nyt koodia silmäillessäni voin todeta, että peli voisi hyvin hyötyä vastaavasta bugikorjaus reviewstä. Esimerkiksi y-akselilla alustat tuppaavat spawnaamaan niin, että yhdeltä alustalta pääsee loikkaamaan vain yhteen tiettyyn alustaa, muut ovat liian korkealla, eikä pelaajan hyppy riitä niihin pääsemiseen. Peliä ei myöskään voi löytää tai ladata play-kaupasta, sillä se ei tue tiettyjä uusia Android-SDK:ta. 
+                </p>
+            </div>
+        </div>
+
+    </body>
+</html>

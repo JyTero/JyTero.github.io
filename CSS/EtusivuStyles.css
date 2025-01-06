@@ -1,0 +1,77 @@
+#QuickFacts {
+	Display: none;
+}
+h1 {
+	padding: 10px;
+	margin-top: 35px;
+}
+#IntroMe{
+	Margin-top: 0px;
+}
+#IntroCV {
+	Margin-top: 50px;
+}
+#IntroCv p{
+	Margin-bottom: 0px;
+	
+}
+#IntroProjects {
+	Margin-top: 55px;
+}
+#IntroProjects p{
+	Margin-bottom: 0px;
+	
+}
+#Form {
+	margin-top: 50px;
+	Display: Flex;
+	Flex-direction: column;
+	width: 580px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+}
+#Form p {
+	margin: 0px;
+}
+#FormFields {
+	Display: Flex;
+	Flex-direction: column;	
+	margin-top: 15px;
+}
+::placeholder {
+	text-align: center;
+}
+.FormField {
+	text-align: center;
+	padding: 10px;
+	margin-top: 5px;
+	border-radius: 40px 40px 40px 40px;
+	border: solid;
+}
+.FormField:focus{
+	outline: none;
+}
+#MSG {
+	font-family: arial;
+	resize: none;
+}
+#send {
+	background: rgba(204, 214, 226, 0.4);
+	font-weight: bold;
+	text-decoration: underline;
+	font-size: 18px;
+
+}
+
+@media only screen and (max-width: 769px) {
+	#Form {
+		width: 88%;
+	}
+}
+
+@media only screen and (max-width: 1150px) and (min-width: 770px){
+	#Form {
+		width: 600px;
+	}
+}
