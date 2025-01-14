@@ -1,5 +1,18 @@
-ul {
+#Content ul {
     list-style-type: none;
+}
+#Content li {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+#Content h2{
+    font-size: 32px;
+    margin-top: 0px;
+    margin-bottom: 0xp;
+}
+#Content p{
+    margin-bottom: 1px;
+    margin-top: 1px;
 }
 @media only screen and (max-width: 769px) {
 }
