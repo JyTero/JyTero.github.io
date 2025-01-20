@@ -1,6 +1,6 @@
-<!doctype hmtl>
+<!doctype html>
 
-<html>
+<html lang="en">
     <head>
         <meta charset = "utf-8">
         <meta name = "author" content = "Jyri Tero">
@@ -34,6 +34,8 @@
                     <!-- <img src = "../IMG/MorningRush.png" alt = "Unfinished business"> 
                     <p>Img Here</p>-->
                     <div id = "FactText">
+                        <p>Prototype basics of a Utility AI for NPC characters</p>
+                        <p>Made in Unity 2021.3.15.f1</p>
                         <p>Date: 07/2023</p>
                         <p>Made by: Jyri Tero</p>
                         <!--<a href = "https://globalgamejam.org/games/2024/morning-rush-4">Download Morning Rush from Global Game Jam Site!</a>-->
@@ -43,99 +45,175 @@
                     </div>
                 </div>
                 <div id = "intro">
+                    <h2>Short</h2>
                     <p>
-                        Hotel V is an independent project started mainly to learn and gain credit for studies. Game is planned to be a hotel management game in which the player is tasked with building and managing a hotel for both human and vampires, latter of which gives more rewards and introduces risks. In actuality, the project focused on the basics of character AI and is currently on hold for now due to lack of time. I’ve written this English report a while after soft ending the project and the code needs refactoring and adjustment. I’d argue that principles still stand, execution need refinement.         
+                        Hotel V is an independent project I stared during my studies to learn. Bulk of the work on the project was done during the summer of 2023. The idea was to work on a hotel management game,
+                        mainly the character AI. I was inspired by the way Sims in The Sims franchise work via <a href = "https://en.wikipedia.org/wiki/Utility_system" target = "_blank">Utility AI</a> and wanted to create something similar.
                     </p>
-                    <p>
-                        A dedicated page for more technical details, code screenshots and such will be published and linked here as I have the time to write it. For any questions regarding the project, or any other project of mine, feel free to fire an email to bjyte001@edu.xamk.fi
-                    </p>
+
                 </div>
             </div>
             <div id = "Texts">
-                <h2>The wrong direction</h2>
+                <h2>Short Continue</h2>
+                    <p>
+                        In its current state the project has a somewhat working basis of an utility AI. Characters should be able to find and complete certain actions, 
+                        mainly go to bar and sleep. They have energy need which ticks down and they take care of it by sleeping in their own bed.
+                    </p>
+                    <p>
+                        Project is considered to be on hold as I haven’t had the time to continue it. I wish to continue it as the topic interests me and I wish to continue it.
+                        I’d start the project from the beginning because of the messy codebase requiring way too much updating to make the code maintainable. 
+                    </p>
+                    <p>
+                        The idea for the project started as an interest to produce an AI similar to that of The Sims, meaning an utility AI which takes all available actions and score them based on character needs and
+                        traits. The result is that a hungry character goes to get food and an outgoing character goes to chat with strangers.  
+                    </p>
+                    <p>
+                        I was heavily inspired by <a href = "https://www.youtube.com/watch?v=9gf2MT-IOsg" target = "_blank"> this YouTube video </a> by Game Maker’s Toolkit and based the AI onto the details within. The video is embedded further down on this page. 
+                        I’ve also since looked through the sources of the video, though mainly to satiate my own curiosity for how The Sims specifically functions and to draw inspirations on future attempts at the AI type. 
+                    </p>
+                    <p>
+                        Below is the project report I turned in during my studies. It briefly explains the basic technical concepts and problems I ran into while working on the project. 
+                        It’s mostly unedited with only minor readability improvements.  
+                    </p>
+                
+                <h2>The Report</h2>
+                <h3>The wrong direction</h3>
                 <p>
-                    Initially I started with the different AIs the game would have. The planned structure was fairly simple: CleanerAI gets an alert of a room in need of cleaning. The AI would then look for the nearest cleaning cupboard and would transfer the “task” to that room. The room would then assign the “task” to the first available cleaner who’d then go to the room and clean it. The structure was inspired by watching fire services respond to fires around the city. This whole structure, however, is in need of complete rewrite due to change in AI design direction that came about when designing residents of the hotel.                
+                    I started with the different AIs the game would have. The planned structure was fairly simple, given example is the house keeping of the hotel:
+                    CleanerAI gets an alert of a room in need of cleaning. The AI would look for the cleaning cupboard closest to the room and would transfer the “task” to that room.
+                    The room would assign the “task” to the first available cleaner who’d then go to the room and clean it. The structure was inspired by watching fire services respond to
+                    fires around the city in a city building game Cities: Skylines. This whole structure, however, is in need of a complete rewrite due to change in AI design direction that came about
+                    when designing the AI for the hotel residents.   
                 </p>
                 <p>
-                    When starting the human residents, I made a simple pseudo-AI that guides the resident to hotel reception which assigns a room for them. They then route to the room, from which they go to hotel bar. They stay at the bar until their energy need falls and they return to their room to sleep, from which they return to bar. Vampires work mostly the same except they don’t need to sleep but need to drink blood. They can meet people in the bar and when hungry, go through list of known humans and go feed on them while they sleep. Idea behind this non-dynamic “AI” was to have some basic interactions in place before starting the actual decision-making progress. 
+                    When starting the work on human residents, I made a simple pseudo-AI that guides the resident to hotel reception which assigns a room for them. They then route to the room,
+                    from which they go to hotel bar. They stay at the bar until their energy need falls and they return to their room to sleep, from which they return to bar.
+                    Vampires work mostly the same except they don’t need to sleep but need to drink blood. They can meet people in the bar and when they get hungry, they go through list of known humans and
+                    go feed on them while they sleep. Idea behind this non-dynamic “AI” was to have some basic interactions in place before starting the work on the actual decision-making process.
                 </p>
                 <h2>Finding the way</h2>
                 <p>
-                    While working on the non-dynamic AI, I ran into a YouTube video from an account I’ve subscribed to a while ago about AI of The Sims. Basically, interactions “advertise” themselves to the character AI which then scores all the actions, using, among other things, character traits and needs as weighting to get the next action for the character. I had read up on the topic before since The Sims is one the franchises that got me into gaming, but the video opened the topic up more clearly for me and inspired me to try something similar in this game, given that I hadn’t yet made a decision on how the people in the game should make decisions. I had earlier made a fairly simple, state machine based enemy AI for a stealth platformer, but I was excited to dive into this new topic, armed with a plan:           
+                    While working on the non-dynamic “AI”, I ran into a YouTube video from Game Maker’s Toolkit about the AI of The Sims. Basically, interactions “advertise” themselves to the character AI
+                    which then scores all the actions, using, among other things, character traits and needs as weighting to get the next action for the character. I had read up on the topic before,
+                    since The Sims is one the franchises that got me into gaming, but the video opened the topic up more clearly for me and inspired me to try something similar in this game, given that I hadn’t
+                    yet made a decision on how the people in the game should make decisions. I had earlier made a fairly simple, state machine based enemy AI for a stealth platformer, but I was excited to dive
+                    into this new topic, armed with a plan:
                 </p>
                 <div id = "Findingway">
                     <div id ="FindingTexts">
                         <ul>
                             <li>                           
-                                When a character needs to decide what to do next, they gather all Actions available on objects within a distance to a list. Actions are interactions character may have with an object, such as Sleep on Bed or Talk to on other characters.                
+                                When a character needs to decide what to do next, they gather all Actions available on objects within a distance to a list. Actions are interactions character may take with
+                                an object, such as Sleep on Bed or Talk to on other characters.                             
                             </li>
-                            <li>                           
-                                When all Actions have been gathered, the list is filtered as it contains all Actions and not all Actions are available to everyone. Characters have traits, such as trait_Vampire and Actions have forbbidenTraits and requiredTraits and with these, it’s possible to avoid Vampires sleeping and Humans feeding on people. Valid actions are added to separate validActions list.                                            
+                            <li>  
+                                When all Actions have been gathered, the list is filtered as it contains all Actions and not all Actions are valid for everyone. Characters have traits, such as trait_Vampire 
+                                and Actions have forbbidenTraits and requiredTraits and with these, it’s possible to avoid Vampires sleeping and Humans feeding on people. Valid actions are added to
+                                separate validActions list.
                             </li>
                             <li>                     
-                                The remaining actions are scored based on characters needs and traits to have characters do things that improve their mood and aligns with their personality.                
+                                The valid Actions are scored based on characters needs and traits to have characters do things that improve their mood and align with their personality.                 
                             </li>
                         </ul>
                     </div>
                     <div id = "FindingVid">
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/9gf2MT-IOsg?si=RBnR4zsO5rsDvpYS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         <p>
-                            The YouTube video about the AI of The Sims. The channel has many, what I find to be good, videos about game design and development.                    
+                            The YouTube video about the AI of The Sims. The channel has many, videos about game design and development.                    
                         </p>
                         <p>
-                        Idea is that eventually all characters, meaning both hotel residents and hotel employees, would work using the this type of AI and have Action  scoring push the employees to do employee tasks such as cleaning. 
+                            The plan is that eventually all characters, meaning both hotel residents and hotel employees, would work using this type of AI and have Action scoring push the employees
+                            to do employee tasks such as cleaning. 
                         </p>
                     </div>
                 </div>
                 <h2>Gathering and creation of Actions</h2>
                 <p>
-                    This was the plan with which I set to work. First, I needed to gather all potential interactions from nearby objects. Plan was to create an Action class which includes at least delegate Interaction, pointing to the method that begins the interaction, interaction name and base score for the interaction attractiveness. This was followed by a number of difficulties and issues.       
+                    This was the plan with which I set to work. First, I needed to gather all potential interactions from nearby objects. Plan was to create an Action class which includes at least 
+                    delegate Interaction, pointing to the method that begins the interaction, interaction name and base score for the interaction attractiveness. This was followed by
+                    a number of difficulties and issues. 
+                </p>
                 <p>
-                    At the center of it all was the creation of Action objects so that items in the world may have them and characters then gather them. The Action class stores and packages basic information about interaction to make them easier to handle.      
+                    At the center of it all was the creation of Action objects so that items in the world may have them and characters then gather them. The Action class stores and packages basic
+                    information about interaction to make them easier to handle. 
                 </p>
 
                 <p>
-                    I wanted to do things “right”, and have interaction scoring, naming and other tunables be easily adjustable right within the editor view so I ended up making interactions as scriptable objec (ActionScriptableObject, AcSO). Plan was each interaction is its own scriptable object to which a prefab of the interaction owner(=item) is given so that it may get access to the proper script and connect with the interaction methods within. Each interaction method is marked so that it shows up on a list within inspector, from which, the one applicable to the current AcSO would be chosen from inspector. From within editor via custom button, AcSO could generate the Action classed object and once the game is started, ActionsManager gets all AcSOs, sorts them to lists by Action owner and each object feches its own interactions from this list. Example: Sleep AcSO is created and set up and once game starts, ActionsManager gets the AcSO and sorts it to bedActions listfrom which items with bed script get it and add it item’s actions list.                
+                    I wanted to do things “right”, and have interaction scoring, naming and other tunables be easily adjustable within the editor view so I ended up making interactions as scriptable objects
+                    (ActionScriptableObject, AcSO). Plan was that each interaction is its own scriptable object to which a prefab of the interaction owner(=item) is given so that it may get access to the proper
+                    script and connect with the interaction methods within. Each interaction method is marked so that it shows up on a list within inspector, from which the one suitable to the current AcSO
+                    would be chosen within the inspector. From within editor via custom button, AcSO could generate the Action classed object and once the game is started, ActionsManager gets all AcSOs,
+                    sorts them to lists by Action owner and each object fetches its own interactions from this list. Example: Sleep AcSO is created and set up. Once the game starts, ActionsManager gets
+                    the AcSO and sorts it to bedActions list from which items with bed script get it and add it item’s actions list. The sorting happens with a switch case which checks AcSO’s interaction owner.
                 </p>
                 <p>
-                    Described workflow, however, did not work. At some point when moving from editor mode to play mode, Interaction field of the AcSos, the one that’s supposed to get the selected method from script in a prefab given to it, stayed or became null. I struggled with the issue for a week, getting more and more entagled to my own code, until after a conversation with a friend inspired me come up with the current flow of interaction creation and management.                
+                    The described workflow, however, did not work. At some point when moving from editor mode to play mode, Interaction field of the AcSos, the field that’s supposed to get the selected method
+                    from script in the prefab given to it, stayed or became null. I struggled with the issue for a week, getting more and more entangled to my own code, until after a conversation with a friend
+                    inspired me come up with the current flow of interaction creation and management.
                 </p>
                 <p>
-                    Basics stay the same: Each interaction has its own AcSO which saves interaction name, base score and a possibility to add required, forbidden and required traits and weighted needs. When these are set up, the AcSO is ready. Once the game is started, ActionsManager gets all AcSO’s and sorts them to items as before. The item, as it gets the AcSO’s, creates the Actions and runs OnStartUp on each AcSO, tying the premade references to the actual item in question. Now the interaction and the interaction within is ready. Essentially, player gathers and scores Actions and through which it calls RunAction from the AcSO which then calls the proper method to begin the actual interaction. To facilitate all this, each and every AcSO inherits from AcSOBase, meaning for sleep interaction the chain in inheritance is ScriptableObject &rarr; AcSOBase &rarr; ActionSO_Bed (which would need to be renamed to something along the lines of Sleep_AcSO)               
+                    Basics stay the same: Each interaction has its own AcSO which saves interaction name, base score, interaction owner and a possibility to add forbidden and required traits and weighted needs.
+                    When these are set up, the AcSO is ready. Once the game is started, ActionsManager gets all AcSO’s and sorts them to items as before. The item gets the AcSos from its list and creates the
+                    Actions. OnStartUp is run on each AcSO, tying the AcSO to the actual item in question. Now the AcSO and the interaction within is ready.    
                 </p>
                 <p>
-                    After all that it was fairly simple to device a way to gather all Actions from items nearby, although currently it takes no consideration of the actual distance to the item and for example looks through items above or below character. It does, however, check if item has free interaction spots and if bed is character’s bed or someone else’s. Next is filtering the Actions.
+                    Now, the character gathers and scores Actions and on chosen Action it calls RunAction from the AcSO which then calls the proper method to begin the actual interaction. To facilitate all this,
+                    each and every AcSO inherits from AcSOBase, meaning for sleep interaction the chain in inheritance is ScriptableObject → AcSOBase → ActionSO_Bed (which would need to be renamed to something
+                    along the lines of Sleep_AcSO)             
                 </p>
                 <p>
-                    In current design, filtering done mostly by comparing which traits character has and if those traits exist in either forbiddenTraits list or requiredTraits list which exist in Action and are handcrafted via code in the acSO responsible for the Action. The filtering process is quite simple: Action has forbiddenTraits and character has any of them, the Action is added to invalidActions list, though the list is currently unused. Next is checked if the Action has required traits and then is checked if the character has all of them. If any of them is found to be missing, the Action is discarded as before, otherwise the Action is considered valid and added to validActions list for later scoring. 
+                    After all that it was fairly simple to come up with a way to gather all Actions from nearby items, although currently it takes no consideration of the actual distance to the item and for
+                    example gathers through items above or below character. It does, however, check if item has free interaction spots and if bed is character’s bed or someone else’s.              
+                </p>
+                <p>
+                    In current design, filtering done mostly by comparing which traits the character has and what traits, if any, exist in either forbiddenTraits list or requiredTraits list which exist in Action,
+                    created from the AcSO responsible for that Action. The filtering process is simple: Action has forbiddenTraits and if the character has any of them, the Action is added to invalidActions list,
+                    though the list is currently unused. Next is checked if the Action has required traits and then is checked if the character has all of them. If any of them is found to be missing, the Action
+                    is discarded as before, otherwise the Action is considered valid and added to validActions list for later scoring. 
                 </p>
                 
                 <h2>Filtering and scoring Actions</h2>
                 <p>
-                    Now that Actions have been filtered to be only the ones character can do, it’s time to score them and choose the highest scoring one. Coming up with the formula to get the actual scoring took some time, and help from ChatGPT, as I’m no mathematician. Basics of the formula is BaseScore * (needWeighting + traitWeighting). With some help from GPT I managed to write it out so that there’s no multiplier the multiplier. First, each multiplier’s logarithm gets calculated, and these multipliers get added together, though keeping need multiplier separate from trait multiplier. If no weighted traits or needs exist for an Action, the multiplier defaults to 1. If multiplier is anything but 1, it gets exponentiated and the result is used to multiply the base score, resulting in the final score that Action. This is done to each valid Action.
+                    Now that Actions have been filtered to be only the ones the character can do, it’s time to score them and choose the highest scoring one. Coming up with the formula to get the actual
+                    scoring took some time, and help from ChatGPT, as I’m no mathematician. Basics of the formula is BaseScore * (needWeighting + traitWeighting). With some help from GPT I managed to write
+                    it out so that there’s no multiplier the multiplier. First, each multiplier’s logarithm gets calculated, and these multipliers get added together, though keeping need multiplier separate
+                    from trait multiplier. If no weighted traits or needs exist for an Action, the multiplier defaults to 1. If multiplier is anything but 1, it gets exponentiated and the result is used to
+                    multiply the base score, resulting in the final score that Action. This is done to each valid Action.               
                 </p>
                 <p>
-                    If Action has a needWeighting, the weighting is taken from an animation curve set for that specific need. Needs are floats on scale of 0-100 and when it’s time to get need weighting, the current need value is divided by 100. The result is the x-axis of the animation curve while the y-axis is the weighting multiplier. This allows dynamically adjust the multiplier a need gives to an Action, leading to more natural Action selection and the character (should) be able to take care of its needs. As an example, the Energy need weight curve starts from way below 1 when the need is high, meaning the character is less likely to take Actions that weight energy and currently these are designed to be Actions that increase the need, though in future a system would need to be made to check if need is high enough for action. Only when the energy need has 40% left, is the need weight 1, climbing fairly sharply after that, reaching 2 at 20%. Numbers are of course place holders, no actual testing has been done, but the logic is there.
+                    If Action has a needWeighting, the weighting is taken from an animation curve set for that specific need. Needs are floats on scale of 0-100 and when it’s time to get need weighting,
+                    the current need value is divided by 100. The result is the x-axis of the animation curve while the y-axis is the weighting multiplier. This allows dynamically adjust the multiplier a
+                    need gives to an Action, leading to more natural Action selection and the character (should) be able to take care of its needs. As an example, the Energy need weight curve starts from way
+                    below 1 when the need is high, meaning the character is less likely to take Actions that weight energy and currently these are designed to be Actions that increase the need, though in
+                    future a system would need to be made to check if need is high enough for action. Only when the energy need has 40% left, is the need weight 1, climbing fairly sharply after that,
+                    reaching 2 at 20%. Numbers are of course place holders, no actual testing has been done, but the logic is there.                
                 </p>
                 <p>
-                    Weighting traits is much simpler, though the feature hasn’t seen much development. Traits have TraitWeight method that takes Action as an argument. Each trait overrides the method and within is an if for each Action that weights the trait in question. The method returns the multiplier float. Currently there’s no way to adjust the multipliers outside of code, though I’d probably make the traits another type of scriptable objects for that purpose.
+                    Weighting traits is much simpler, though the feature hasn’t seen much development. Traits have TraitWeight method that takes Action as an argument. Each trait overrides the method and within
+                    is an if for each Action that weights the trait in question. The method returns the multiplier float. Currently there’s no way to adjust the multipliers outside of code, though I’d probably
+                    make the traits another type of scriptable objects for that purpose.                 
                 </p>
                 <p>
-                    Once all valid Actions have been scored, the validActions list is ordered by descending based on Action.score. The first Action on that list, meaning the Action with the highest score, gets selected and the interaction related to the Action begins.
+                    Once all valid Actions have been scored, the validActions list is ordered by descending based on Action.score. The first Action on that list, meaning the Action with the highest score, gets
+                    selected and the interaction related to the Action begins.
                 </p>
                 <h2>Minor Features</h2>
                 <p>
-                    That’s the core of what the AI is currently capable of. There are a few smaller features within the AI that have been at least partially implemented: 
+                    That’s the core of what the AI is currently capable of. There are a few smaller features within the AI that have been at least partially implemented:
                 </p>
                 <p>
-                    NeedBaseScoringCheck is meant to initialize a specialized Action fetch/scoring to improve character needs. Needs have thresholds and once need crosses one, an Action scoring begins without iterupting what ever the character is currently doing. This need based check gathers only Actions which weigh the need triggering the check (= Actions which improve the need). If the resulting top scoring Action’s score is higher than the score the current Action got at its initial check, character switches to do the new action. If it’s less, the character continues the old action until the Action ends or another need threshold is crossed and the scoring results in change in Action. System currently seems to have  a bug that when needs are improving and cross a threshold, the background check is initiated and the character ends up in a somewhat invalid state. 
+                    NeedBaseScoringCheck is meant to initialize a specialized Action fetch/scoring to improve character needs. Needs have thresholds and once need crosses one, an Action scoring begins without
+                    interrupting whatever the character is currently doing. This need based check gathers only Actions which weigh the need triggering the check (= Actions which improve the need). If the
+                    resulting top scoring Action’s score is higher than the score the current Action got at its initial check, character switches to do the new action. If it’s less, the character continues
+                    the old action until the Action ends or another need threshold is crossed and the scoring results in change in Action. System currently seems to have a bug that when needs are improving and
+                    cross a threshold, the background check is initiated and the character ends up in a somewhat invalid state.                 
                 </p>
                 <p>
-                    The System also supports items with multiple interaction spots, meaning items can be simultaneously used by multiple people.  Item’s free spots are checked a few times through out the process, the idea was to avoid situations where character picks an action, only for the free spot to have been taken before they can even begin. First time the free spots are checked is during the Action gathering phase Actions from items that have no free interaction spots will be discarded as invalid. The second free spot check happens once character has travelled to the object and is about to begin the interaction. Character checks and reserves a spot for themselves to use. If no free spots are found at this stage, the character picks the second highest scoring action from the scoring run that resulted in the cancelled Action.
-                </p>
-                <h2>Future</h2>
-                <p>
-                    As mentioned multiple times, the project is currently in a buggy and unfinished state. I would love to continue it when the right combination of time and energy presents itself. Here is a git link to the repo containing the project, make sure to select the Alternative_attempt branch as its the most progressed one. If there are any questions regarding the project, feel free to shoot an email, address is at the top of the site. 
+                    The System also supports items with multiple interaction spots, meaning items can be simultaneously used by multiple people. Item’s free spots are checked a few times through out the
+                    process, the idea was to avoid situations where character picks an action, only for the free spot to have been taken before they can even begin. First time the free spots are checked is
+                    during the Action gathering phase Actions from items that have no free interaction spots will be discarded as invalid. The second free spot check happens once character has travelled to
+                    the object and is about to begin the interaction. Character checks and reserves a spot for themselves to use. If no free spots are found at this stage, the character picks the second
+                    highest scoring action from the scoring run that resulted in the cancelled Action.               
                 </p>
             </div>
         </div>
