@@ -32,8 +32,9 @@
             <div id = "CardIntro">
                 <div id = "InfoCard">
                     <!-- <img src = "../IMG/MorningRush.png" alt = "Unfinished business"> -->
-                    <p>Img Here</p>
                     <div id = "FactText">
+                        <p>Prototype of a State machine AI for enemy characters</p>
+                        <p>Made in Unity 2021.3.15.f1</p>
                         <p>Date: 05/2023</p>
                         <p>Made by: Jyri Tero</p>
                         <!--<a href = "https://globalgamejam.org/games/2024/morning-rush-4">Download Morning Rush from Global Game Jam Site!</a>-->
@@ -44,76 +45,102 @@
                 </div>
                 <div id = "intro">
                     <p>
-                        Penthouse break-in is meant to be a mascot platformer, inspired by Sucker Punch’s Sly franchise. High level vision for the game was to replicate and improve upon the original. I worked on enemy AI, not much else has been done to the project since. 
-                    </p>
-                    <p>
-                        A dedicated page for more technical details, code screenshots and such will be published and linked here as I have the time to write it. For any questions regarding the project, or any other project of mine, feel free to fire an email to bjyte001@edu.xamk.fi
+                        Penthouse break-in is a work-in-progress tittle for a mascot platformer type of game inspired by Sucker Punch’s Sly-trilogy. The project never got far due to studies taking
+                        the available time. I began work on the enemy AI as that was, and is, an interest of mine. The enemies have function using a state machine which is driven by enemy awareness.
+                        Awareness rises when the enemy AI sees or hears the player and automatically declines to 0 if nothing happens. 
                     </p>
                 </div>
             </div>
             <div id = "Texts">
+                
+                <p>
+                    When the project was put away, the project had a working base of a state machine which was able to detect player, give chase and on losing line of sight, look for the player
+                    near the last place they were seen before returning to their patrol.  The goal initially was to replicate the three enemy types found in Sly 2, but the differences were only
+                    partially implemented. The enemies utilize Unity NavMesh to move around, and different types of enemies have separate NavMeshes to allow certain enemies to jump onto rooves and such.  
+                </p>
+                <p>
+                    The enemy awareness and the vision and hearing senses were built with the help of <a href="https://www.youtube.com/watch?v=ku1sBjizDeI" target="_blank">this</a> 
+                    YouTube tutorial by Ian McManus. The video is embedded onto this page further down.
+                    The more state machine was later added with the help of <a href ="https://gamedevbeginner.com/state-machines-in-unity-how-and-when-to-use-them/" target="_blank">this</a>
+                    guide on gamedevbeginner.  
+                </p>
+                <p>
+                    Below is the project report I turned in during my studies. It goes into the process of working on the project and details on how the AI works.  It’s mostly unedited with only minor readability
+                    improvements.
+                </p>
+                
+                <h2>Report</h2>
                 <h2>Inspiration</h2>
                 <p>
-                    The game and it’s enemy AI is heavily inspired by Sly franchise, especially Sly 2. In that game, most enemies can be categorized into three groups: Large flashlight enemies, who take and deal more damange, move slower and cannot jump to rooves and such, and two smaller enemies, one of which is capable of alerting nearby guards. Guards patrol on their routes when idle, on seeing player they come investigate and attack when the player is fully detected. If the player runs and hides, the enemies will spend a few moments looking around before giving up and returning to their patrols.                </p>
-                <p>
-                    I wanted to replicate this within my own AI, though with more granular detection and disappearance. My first idea was to do the AI using GOAP-methods. GOAP (Goal Oriented Action Planning) means that the AI has a desire, such as defeat player, actions it can take, such as melee attack which may have additional requirements such as being close enough to melee. In such case, GOAP would build a course of action that’d lead it closer to fulfilling its goal of defeating player by first routing to player, then using its melee attack. I had heard, and done a bit of research of, this type of AI during a lesson, but after doing some more research on the topic I came to the conclusion that GOAP is not what the project needs. The planned enemies do not have to come up with complicated plans to get the player and a simpler approach would suit the game better.             
+                    The game and it’s enemy AI are heavily inspired by the Sly franchise, especially Sly 2. In that game, most enemies, or guards, can be categorized into three groups: large flashlight enemies
+                    who take and deal more damage, move slower and cannot jump to rooves and such, and two smaller enemies, one of which is capable of alerting other nearby enemies. Guards patrol on their routes
+                    when idle and on seeing the player they come investigate and attack when the player is fully detected. If the player runs and hides, the enemies will spend a few moments looking around before
+                    giving up and returning to their patrols.             
                 </p>
+                <p>
+                    I wanted to replicate this within my own AI, though with more granular detection and disappearance. My first idea was to create a GOAP AI. GOAP (Goal Oriented Action Planning) means that
+                    the AI has a desire, such as defeat player, actions it can take, such as melee attack which may have additional requirements such as being close enough to melee. In such case, GOAP would
+                    build a course of action that’d lead it closer to fulfilling its goal of defeating player by first routing to player, then using its melee attack. I had heard, and done a bit of research of,
+                    this type of AI during a lesson, but after doing some more research on the topic I came to the conclusion that GOAP is not what the project needs. The planned enemies do not have to come up
+                    with complicated plans to get the player and a simpler approach would suit the game better.                
+                </p>
+                
                 <h2>Hearing & Seeing</h2>
                 <div id ="PenthouseEyes">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/ku1sBjizDeI?si=rAnT6C6MwZcFMOmG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     <p>
-                        While doing the research I ran across a useful tutorial in which an enemy AI receives hearing and vision senses. The tutorial is part of a series and I decided to use it as a basis for the AI for the project. At its core, the AI is a base of a state machine running on Awareness, a stat which raises when the guards see/hear the player and lowers when the guard loses sight of the player. When Awareness crosses a threshold, a proper method is called and the guard acts accordingly.         
+                        While doing the research for the project, I ran across a useful tutorial creating hearing and visions sense for an enemy AI. I decided to use it as a basis for the AI for the project.
+                        At its core, the AI is a base of a state machine running on Awareness, a stat which raises when the guards see/hear the player and lowers when the guard loses sight of the player.
+                        When Awareness crosses a threshold, a proper method is called and the guard acts accordingly.                   
                     </p>
                 </div>
 
                 <p>
-                    For each threshold there is a function for when the Awareness increases above it or drops below it. As an example, on raising awareness the guard might look at the source of disturbance. When the same threshold is crossed while the Awareness is decreasing, the guard goes to a nearby location and looks to a random direction, looking for the player. This is not a true state machine as the “state” is not clearly defined nor is it saved anywhere, only the “triggering” methods are called when a threshold is crossed. I did consider building a proper state machine, but the idea seemed more confident than what the project called for. I will later reverse this decision.   
+                    For each threshold there is a function for when the Awareness increases above it or drops below it. As an example, on raising awareness the guard might look at the source of disturbance.
+                    When the same threshold is crossed while the Awareness is decreasing, the guard goes to a nearby location and looks to a random direction, looking for the player. This is not a true state
+                    machine as the “state” is not clearly defined nor is it saved anywhere, only the “triggering” methods are called when a threshold is crossed. I did consider building a proper state machine,
+                    but the idea seemed more complicated than what the project called for. I will later reverse this decision. 
                 </p>
                 <p>
                     Implementing the hearing and seeing systems following the tutorial was a fairly simple task and writing out basic reactions for when the awareness crosses a threshold was also doable. 
-
-                <p>
-                    As for navigation, the plan was to use Unity Navmesh. I had some experience with the system prior, mostly at a distance, working on something else while the system was added to project. By default, Unity comes with the basics for Unity Navmesh, such as backing a navmesh and agents for traveling one. For this project I found myself needing more for a few reasons. Firstly, the smaller enemies should be able to jump onto, off from and between roofs, meaning there needs to be a way for the AI to path find from a lower level to a higher one and vice versa. I also needed a way to have “separate navmeshes” for the different enemy types, yet again to facilitate the smaller enemies to be able to jump onto roofs but to forbid larger enemies form doing the same. For this I found Unity AI Navigation package which contains tools for creating “jump” spots between different nav meshes (roof and ground, for example) and a way to have multiple agent types with their own navmeshes. It took me a while to find the tools needed and learn how to use them, though the fault is mine as I tend to be bad at sitting down and reading documentation.       
                 </p>
+                <p>
+                    As for navigation, the plan was to use Unity Navmesh. I had some experience with the system prior, mostly at a distance, working on something else while the system was added to project.
+                    By default, Unity comes with the basics for Unity Navmesh, such as baking a navmesh and agents for traveling one. For this project I found myself needing more for a few reasons.
+                    The smaller enemies should be able to jump on to, off from and between roofs, meaning there needs to be a way for the AI to path find from a lower level to a higher one and vice versa.
+                    I also needed a way to have “separate navmeshes” for the different enemy types, yet again to facilitate the smaller enemies to be able to jump onto roofs but to forbid larger enemies form
+                    doing the same. For this I found Unity AI Navigation package which contains tools for creating “jump” spots between different nav meshes (roof and ground, for example) and a way to have
+                    multiple agent types with their own navmeshes. It took me a while to find the tools needed and learn how to use them, though the fault is mine as I tend to be bad at sitting down and reading
+                    documentation.                
+                </p>
+                
                 <h2>Growing Pains</h2>
                 <p>
-                    At this point the project was clearly outgrowing existing systems and architecture I had planned and I took a few moments to refactor some of the code, mainly how enemies are structured. My original, and in hindsight a somewhat dumb plan, was to create an enemy class and then copy-paste code around to create the others. I realized that if I wanted to adjust something all or most enemy types are capable of, such as the chasing, I would have to do the same adjustment at least three times for the three different enemy types. A simple solution was to make the current enemy class to be BaseEnemy and have all other enemy types inherit from that, adding type specific methods to the inherited class.           
+                    At this point the project was clearly outgrowing existing systems and architecture I had planned and I took a few moments to refactor some of the code, mainly how enemies are structured.
+                    My original, and in hindsight a somewhat dumb, plan was to create an enemy class and then copy-paste code around to create the others. I realized that if I wanted to adjust something all
+                    or most enemy types are capable of, such as the chasing, I would have to do the same adjustment at least three times for the three different enemy types. A simple solution was to make the
+                    current enemy class to be BaseEnemy and have all other enemy types inherit from that, adding enemy type specific methods to the inherited class.               
                 </p>
                 <p>
-                    After the enemy class rework, I came to realize that the state machine lite I had going for the enemy AI was not sufficient and I started a more robust and proper state machine. Main reasons were the fact that the old system did not support any other “actions” related to the “state” than the initial method, called when Awareness crossed threshold, could provide. Related to this was that there was no actual state saved anywhere so creating a proper combat state would've been really difficult. The actual state machine implantation was done with the help from <a href ="https://gamedevbeginner.com/state-machines-in-unity-how-and-when-to-use-them/">gamedevbeginner.com</a>. The state machine is a set of interfaces with certain predefined methods, such as OnEnter, OnExit and UpdateState, which allow for more control over the different states and what the enemy does in each of them.                
+                    After the enemy class rework, I came to realize that the state machine lite I had going on for the enemy AI was not sufficient and I started a more robust and proper state machine.
+                    Main reasons were the fact that the old system did not support any other “actions” related to the “state” than the initial method, called when Awareness crossed threshold, could provide.
+                    Related to this was that there was no actual state saved anywhere so creating a proper combat state would've been really difficult. The actual state machine implantation was done with the
+                    help from <a href ="https://gamedevbeginner.com/state-machines-in-unity-how-and-when-to-use-them/" target="_blank">gamedevbeginner.com</a>. The state machine is a set of interfaces with certain predefined methods, such as OnEnter, OnExit and UpdateState, which allow for more control over the
+                    different states and what the enemy does in each of them.                
                 </p>
+                
                 <h2>Summary</h2>
                 <p>
-                    So how does it work? Enemies go on their predefined patrols, going from point to point. When they see the player, meaning player steps into their cone of vision, their Awareness begins to tick up. Currently target distance from the enemy as well as how center of the cone of vision they are affects the rate of Awareness increase. When Awareness crosses a threshold while going up, enemy state is changed to be more Alert, and they may look at the direction they saw/heard target. If Awareness keeps increasing, the enemy walks towards the player before engaging in full chase/combat. If player disappears from enemy line of sight, the enemy walks to the last place they saw the player and the enemy Awareness begins to tick down. Avoid enemies long enough and they pick a random place from near the last known position to check from, triggered by decreasing Awareness. Once Awareness drops low enough, the enemy returns to their patrol.              
+                    So how does the AI work? Enemies go on their predefined patrols, going from point to point. When they see the player, meaning player steps into their cone of vision, their Awareness begins
+                    to tick up. Currently target distance from the enemy as well as how center of the cone of vision they are affects the rate of Awareness increase. When Awareness crosses a threshold while
+                    going up, enemy state is changed to be more Alert, and they may look at the direction they saw/heard target. If Awareness keeps increasing, the enemy walks towards the source of awareness
+                    increase before engaging in full chase/combat. If player disappears from enemy line of sight, the enemy walks to the last place they saw the player and the enemy Awareness begins to tick down. Avoid enemies long enough and they pick a random place from near the last known position to check from, triggered by decreasing Awareness. Once Awareness drops low enough, the enemy returns to their patrol.               
                 </p>
 
                 <h2>Future</h2>
                 <p>
-                    The project is currently in hibernation with no plans to neither kill nor revive it. The AI is a working protype to build off. There are plans to use the basis of the AI in another project, I’ll link that here if that happens.                </p>
-                <!--<div id = "Findingway">
-<div id ="FindingTexts">
-<ul>
-<li>                           
-When a character needs to decide what to do next, they gather all Actions available on objects within a distance to a list. Actions are interactions character may have with an object, such as Sleep on Bed or Talk to on other characters.                
-</li>
-<li>                           
-When all Actions have been gathered, the list is filtered as it contains all Actions and not all Actions are available to everyone. Characters have traits, such as trait_Vampire and Actions have forbbidenTraits and requiredTraits and with these, it’s possible to avoid Vampires sleeping and Humans feeding on people. Valid actions are added to separate validActions list.                                            
-</li>
-<li>                     
-The remaining actions are scored based on characters needs and traits to have characters do things that improve their mood and aligns with their personality.                
-</li>
-</ul>
-</div>
-<div id = "FindingVid">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9gf2MT-IOsg?si=RBnR4zsO5rsDvpYS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<p>
-The YouTube video about the AI of The Sims. The channel has many, what I find to be good, videos about game design and development.                    
-</p>
-<p>
-Idea is that eventually all characters, meaning both hotel residents and hotel employees, would work using the this type of AI and have Action  scoring push the employees to do employee tasks such as cleaning. 
-</p>
-</div>
-</div>-->
+                    The project is currently in hibernation with no plans to neither kill nor revive it. The AI is a working protype to build off. 
+                </p>
             </div>
         </div>
 
